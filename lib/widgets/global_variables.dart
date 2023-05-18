@@ -1,26 +1,26 @@
-// // import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 
-// // import 'package:instagram/screens/add_post_screen.dart';
-// // import 'package:instagram/screens/feed_screen.dart';
-// // import 'package:instagram/screens/profile_screen.dart';
-// // import 'package:instagram/screens/search_screen.dart';
+// import 'package:instagram/screens/add_post_screen.dart';
+// import 'package:instagram/screens/feed_screen.dart';
+// import 'package:instagram/screens/profile_screen.dart';
+// import 'package:instagram/screens/search_screen.dart';
 
-// import 'package:flutter/material.dart';
-// import 'package:osar_store/mainscreen/dashboard/pages/home_screen.dart';
-// import 'package:osar_store/mainscreen/dashboard/pages/order_history.dart';
-// import 'package:osar_store/mainscreen/dashboard/pages/owner_chat.dart';
-// import 'package:osar_store/mainscreen/dashboard/pages/owner_setting.dart';
+import 'package:flutter/material.dart';
+import 'package:osar_user/bottompages/chat_page.dart';
+import 'package:osar_user/bottompages/home_page.dart';
+import 'package:osar_user/bottompages/order_page.dart';
+import 'package:osar_user/bottompages/setting_page.dart';
 
-// const webScreenSize = 600;
+const webScreenSize = 600;
 
-// List<Widget> homeScreenItems = [
-//   Home_Screen(),
-//   OrderHistory(),
-//   OwnerChat(),
-//   OwnerSetting(),
+List<Widget> homeScreenItems = [
+  Home(),
+  OrderPage(),
+  ChatPage(),
+  SettingPage(),
 
-//   // Profile()
-//   //  Random(),
-//   //  ChatPage(),
-//   //  Profile(),
-// ];
+  // Profile()
+  //  Random(),
+  //  ChatPage(),
+  //  Profile(),
+];
