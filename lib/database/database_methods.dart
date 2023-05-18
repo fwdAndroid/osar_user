@@ -66,6 +66,4 @@ class DatabaseMethods {
     }
     return res;
   }
-
-  //Store
 }

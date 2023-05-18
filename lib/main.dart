@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:osar_user/introscreens/welcome.dart';
+import 'package:osar_user/user_main_dashboard.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +30,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: Welcome(),
+      home: FirebaseAuth.instance.currentUser!.uid == null
+          ? Welcome()
+          : UserMainDashBoard(),
     );
   }
 }

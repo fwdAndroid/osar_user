@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:osar_user/auth/main_auth.dart';
+import 'package:osar_user/profile/edit_profile.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
@@ -95,8 +96,8 @@ class _SettingPageState extends State<SettingPage> {
           ),
           // ListTile()
           zisttile('Setting', Icons.settings, () {
-            // Navigator.push(context,
-            //     MaterialPageRoute(builder: (builder) => Edit_Setting()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (builder) => EditProfile()));
           }),
           Divider(
             color: Colors.grey,
