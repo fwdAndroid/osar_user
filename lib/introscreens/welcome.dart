@@ -1,6 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:osar_user/auth/sign_in.dart';
+import 'package:osar_user/auth/main_auth.dart';
 import 'package:osar_user/introscreens/onboard.dart';
 
 class Welcome extends StatefulWidget {
@@ -39,7 +39,7 @@ class _WelcomeState extends State<Welcome> {
                         fixedSize: Size(MediaQuery.of(context).size.width, 60)),
                     onPressed: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (builder) => SignIn()));
+                          MaterialPageRoute(builder: (builder) => MainAuth()));
                     },
                     child: Text("Sign In"),
                   ))
