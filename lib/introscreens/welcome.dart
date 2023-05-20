@@ -31,10 +31,8 @@ class _WelcomeState extends State<Welcome> {
           child: Column(
             children: [
               Expanded(child: OnBoardingScreens()),
-              Row(
-                children: [
-                  Expanded(
-                      child: ElevatedButton(
+         
+                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         fixedSize: Size(MediaQuery.of(context).size.width, 60)),
                     onPressed: () {
@@ -42,9 +40,8 @@ class _WelcomeState extends State<Welcome> {
                           MaterialPageRoute(builder: (builder) => MainAuth()));
                     },
                     child: Text("Sign In"),
-                  ))
-                ],
-              )
+                  
+                 )
             ],
           ),
         ),
