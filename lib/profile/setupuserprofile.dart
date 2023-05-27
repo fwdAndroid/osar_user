@@ -106,7 +106,7 @@ class _SetupUserProfileState extends State<SetupUserProfile> {
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: RichText(
                           text: TextSpan(
-                            text: 'Upload Store Owner Photo',
+                            text: 'Upload User Photo',
                             style: GoogleFonts.getFont(
                               'Montserrat',
                               fontWeight: FontWeight.w500,
