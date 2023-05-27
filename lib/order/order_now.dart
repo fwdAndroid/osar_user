@@ -108,7 +108,7 @@ class _OrderNowState extends State<OrderNow> {
               child: TextFormInputField(
                 hintText: 'Quantity',
                 textInputType: TextInputType.number,
-                controller: _locationController,
+                controller: _quantityController,
               ),
             ),
             SizedBox(
@@ -143,9 +143,9 @@ class _OrderNowState extends State<OrderNow> {
                                                     Location:
                                                         _locationController
                                                             .text,
-                                                    Quantity: int.parse(
+                                                    Quantity:
                                                         _quantityController
-                                                            .text),
+                                                            .text,
                                                     productUuod:
                                                         widget.productUuod,
                                                     ProductDescritption: widget
