@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:osar_user/bottompages/order_page.dart';
+import 'package:osar_user/order/order_now.dart';
 
 class ProductDetail extends StatefulWidget {
   final ProductName;
@@ -132,7 +133,18 @@ class _ProductDetailState extends State<ProductDetail> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (builder) => OrderPage()));
+                                            builder: (builder) => OrderNow(
+                                                  productUuod:
+                                                      widget.productUuod,
+                                                  ProductDescritption: widget
+                                                      .ProductDescritption,
+                                                  ProductImage:
+                                                      widget.ProductImage,
+                                                  ProductName:
+                                                      widget.ProductName,
+                                                  ProductPrice:
+                                                      widget.ProductPrice,
+                                                )));
                                   },
                                   child: const Text('OK'),
                                 ),
