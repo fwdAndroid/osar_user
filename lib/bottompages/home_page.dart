@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:osar_user/product_detail/product_detail.dart';
 import 'package:osar_user/widgets/my_drawer.dart';
 
 class Home extends StatefulWidget {
@@ -67,8 +65,6 @@ class _HomeState extends State<Home> {
                   child: StreamBuilder<Object>(
                       stream: FirebaseFirestore.instance
                           .collection("products")
-                          .doc(FirebaseAuth.instance.currentUser!.uid)
-                          .collection("productlist")
                           .snapshots(),
                       builder: (BuildContext context, AsyncSnapshot snapshot) {
                         if (!snapshot.hasData) {
@@ -101,21 +97,21 @@ class _HomeState extends State<Home> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: InkWell(
                                     onTap: () {
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //         builder: (builder) =>
-                                      //             ProductDetail(
-                                      //               productUuod:
-                                      //                   data['productUUid'],
-                                      //               ProductDescritption: data[
-                                      //                   'productDescription'],
-                                      //               ProductImage: data['image'],
-                                      //               ProductName:
-                                      //                   data['productName'],
-                                      //               ProductPrice:
-                                      //                   data['prductPrice'],
-                                      //             )));
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (builder) =>
+                                                  ProductDetail(
+                                                    productUuod:
+                                                        data['productUUid'],
+                                                    ProductDescritption: data[
+                                                        'productDescription'],
+                                                    ProductImage: data['image'],
+                                                    ProductName:
+                                                        data['productName'],
+                                                    ProductPrice:
+                                                        data['prductPrice'],
+                                                  )));
                                     },
                                     child: Column(
                                       children: [
