@@ -22,7 +22,6 @@ class _HomeState extends State<Home> {
         elevation: 0,
         backgroundColor: Colors.white,
       ),
-      drawer: MyDrawer(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
