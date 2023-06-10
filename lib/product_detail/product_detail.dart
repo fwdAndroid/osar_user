@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:osar_user/bottompages/order_page.dart';
 import 'package:osar_user/order/order_now.dart';
 
 class ProductDetail extends StatefulWidget {
-  final ProductName;
-  final ProductDescritption;
-  final ProductImage;
-  final ProductPrice;
-  final productUuod;
+  final image;
+  final prductPrice;
+  final productDescription;
+  final productImages;
+  final productName;
+  final productUUid;
+  final storeAddress;
+  final storeName;
+  final storeid;
   ProductDetail(
       {super.key,
-      required this.productUuod,
-      required this.ProductDescritption,
-      required this.ProductImage,
-      required this.ProductName,
-      required this.ProductPrice});
+      required this.image,
+      required this.prductPrice,
+      required this.productDescription,
+      required this.productImages,
+      required this.productName,
+      required this.productUUid,
+      required this.storeAddress,
+      required this.storeName,
+      required this.storeid});
 
   @override
   State<ProductDetail> createState() => _ProductDetailState();
@@ -61,7 +68,7 @@ class _ProductDetailState extends State<ProductDetail> {
           ),
           Container(
             child: Image.network(
-              widget.ProductImage,
+              widget.image,
               fit: BoxFit.fitWidth,
             ),
             height: 200,
@@ -78,7 +85,7 @@ class _ProductDetailState extends State<ProductDetail> {
               )),
           Container(
             margin: EdgeInsets.only(left: 15, right: 15),
-            child: Text(widget.ProductName),
+            child: Text(widget.productName),
           ),
           Container(
               margin: EdgeInsets.only(left: 15, right: 15, top: 15),
@@ -91,7 +98,7 @@ class _ProductDetailState extends State<ProductDetail> {
               )),
           Container(
             margin: EdgeInsets.only(left: 15, right: 15),
-            child: Text(widget.ProductDescritption),
+            child: Text(widget.productDescription),
           ),
           Container(
               margin: EdgeInsets.only(left: 15, right: 15, top: 15),
@@ -104,7 +111,7 @@ class _ProductDetailState extends State<ProductDetail> {
               )),
           Container(
             margin: EdgeInsets.only(left: 15, right: 15),
-            child: Text(widget.ProductPrice.toString()),
+            child: Text(widget.prductPrice.toString()),
           ),
           SizedBox(
             height: 20,
@@ -130,21 +137,21 @@ class _ProductDetailState extends State<ProductDetail> {
                                 ),
                                 TextButton(
                                   onPressed: () async {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (builder) => OrderNow(
-                                                  productUuod:
-                                                      widget.productUuod,
-                                                  ProductDescritption: widget
-                                                      .ProductDescritption,
-                                                  ProductImage:
-                                                      widget.ProductImage,
-                                                  ProductName:
-                                                      widget.ProductName,
-                                                  ProductPrice:
-                                                      widget.ProductPrice,
-                                                )));
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (builder) => OrderNow(
+                                    //               productUuod:
+                                    //                   widget.productUuod,
+                                    //               ProductDescritption: widget
+                                    //                   .ProductDescritption,
+                                    //               ProductImage:
+                                    //                   widget.ProductImage,
+                                    //               ProductName:
+                                    //                   widget.ProductName,
+                                    //               ProductPrice:
+                                    //                   widget.ProductPrice,
+                                    //             )));
                                   },
                                   child: const Text('OK'),
                                 ),
