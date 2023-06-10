@@ -156,6 +156,7 @@ class _ProceedOrderState extends State<ProceedOrder> {
                                         .collection("orders")
                                         .doc(uui)
                                         .set({
+                                      "orderstatus": "initialized",
                                       "productDescription":
                                           widget.productDescription,
                                       "uid": FirebaseAuth
