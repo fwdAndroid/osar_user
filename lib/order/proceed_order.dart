@@ -19,6 +19,7 @@ class ProceedOrder extends StatefulWidget {
   final Quantity;
   final phoneNumber;
   final Location;
+  final username;
   const ProceedOrder({
     super.key,
     required this.image,
@@ -31,6 +32,7 @@ class ProceedOrder extends StatefulWidget {
     required this.storeid,
     required this.productName,
     required this.productUUid,
+    required this.username,
     required this.Location,
     required this.Quantity,
   });
@@ -159,6 +161,7 @@ class _ProceedOrderState extends State<ProceedOrder> {
                                         .collection("orders")
                                         .doc(uui)
                                         .set({
+                                      "username": widget.username,
                                       "phoneNumber": widget.phoneNumber,
                                       "orderstatus": "initialized",
                                       "productDescription":

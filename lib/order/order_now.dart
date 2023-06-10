@@ -33,6 +33,7 @@ class _OrderNowState extends State<OrderNow> {
   TextEditingController _locationController = TextEditingController();
   TextEditingController _quantityController = TextEditingController();
   TextEditingController _phoneNumber = TextEditingController();
+  TextEditingController _username = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,6 +109,14 @@ class _OrderNowState extends State<OrderNow> {
             Container(
               margin: EdgeInsets.only(left: 15, right: 15),
               child: TextFormInputField(
+                hintText: 'User Name',
+                textInputType: TextInputType.text,
+                controller: _username,
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 15, right: 15),
+              child: TextFormInputField(
                 hintText: 'Location',
                 textInputType: TextInputType.text,
                 controller: _locationController,
@@ -155,6 +164,7 @@ class _OrderNowState extends State<OrderNow> {
                                     onPressed: () async {
                                       if (_locationController.text.isEmpty ||
                                           _quantityController.text.isEmpty ||
+                                          _username.text.isEmpty ||
                                           _phoneNumber.text.isEmpty) {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(SnackBar(
@@ -167,6 +177,7 @@ class _OrderNowState extends State<OrderNow> {
                                             MaterialPageRoute(
                                                 builder: (builder) =>
                                                     ProceedOrder(
+                                                      username: _username.text,
                                                       phoneNumber:
                                                           _phoneNumber.text,
                                                       storeid: widget.storeid,
