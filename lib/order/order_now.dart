@@ -32,6 +32,7 @@ class OrderNow extends StatefulWidget {
 class _OrderNowState extends State<OrderNow> {
   TextEditingController _locationController = TextEditingController();
   TextEditingController _quantityController = TextEditingController();
+  TextEditingController _phoneNumber = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,6 +121,14 @@ class _OrderNowState extends State<OrderNow> {
                 controller: _quantityController,
               ),
             ),
+            Container(
+              margin: EdgeInsets.only(left: 15, right: 15, top: 10),
+              child: TextFormInputField(
+                hintText: 'Phone Number',
+                textInputType: TextInputType.number,
+                controller: _phoneNumber,
+              ),
+            ),
             SizedBox(
               height: 20,
             ),
@@ -145,11 +154,12 @@ class _OrderNowState extends State<OrderNow> {
                                   TextButton(
                                     onPressed: () async {
                                       if (_locationController.text.isEmpty ||
-                                          _quantityController.text.isEmpty) {
+                                          _quantityController.text.isEmpty ||
+                                          _phoneNumber.text.isEmpty) {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(SnackBar(
                                                 content: Text(
-                                                    "location or Quantity is required")));
+                                                    "All fields is Required is required")));
                                         Navigator.pop(context);
                                       } else {
                                         Navigator.push(
@@ -157,6 +167,8 @@ class _OrderNowState extends State<OrderNow> {
                                             MaterialPageRoute(
                                                 builder: (builder) =>
                                                     ProceedOrder(
+                                                      phoneNumber:
+                                                          _phoneNumber.text,
                                                       storeid: widget.storeid,
                                                       storeName:
                                                           widget.storeName,

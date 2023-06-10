@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:osar_user/user_main_dashboard.dart';
+import 'package:phone_form_field/phone_form_field.dart';
 import 'package:uuid/uuid.dart';
 
 class ProceedOrder extends StatefulWidget {
@@ -16,12 +17,14 @@ class ProceedOrder extends StatefulWidget {
   final storeName;
   final storeid;
   final Quantity;
+  final phoneNumber;
   final Location;
   const ProceedOrder({
     super.key,
     required this.image,
     required this.prductPrice,
     required this.productImages,
+    required this.phoneNumber,
     required this.productDescription,
     required this.storeAddress,
     required this.storeName,
@@ -156,6 +159,7 @@ class _ProceedOrderState extends State<ProceedOrder> {
                                         .collection("orders")
                                         .doc(uui)
                                         .set({
+                                      "phoneNumber": widget.phoneNumber,
                                       "orderstatus": "initialized",
                                       "productDescription":
                                           widget.productDescription,
