@@ -57,7 +57,7 @@ class _AddMapAddressState extends State<AddMapAddress> {
           : Column(
               children: [
                 Container(
-                  height: 375,
+                  height: 680,
                   child: Stack(
                     children: [
                       GoogleMap(
@@ -197,7 +197,9 @@ class _AddMapAddressState extends State<AddMapAddress> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        fixedSize: Size(200, 40), shape: StadiumBorder()),
+                        primary: Color(0xfffFFBF00).withOpacity(.6),
+                        fixedSize: Size(200, 40),
+                        shape: StadiumBorder()),
                     onPressed: () async {
                       FirebaseFirestore.instance
                           .collection("users")
