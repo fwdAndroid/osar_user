@@ -32,6 +32,7 @@ class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           "Orders Page",
           style: TextStyle(color: Colors.black),

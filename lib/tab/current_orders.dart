@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:osar_user/tab/current_order_detail.dart';
 
 class CurrentOrders extends StatefulWidget {
   const CurrentOrders({super.key});
@@ -24,7 +25,7 @@ class _CurrentOrdersState extends State<CurrentOrders> {
                     .collection('orders')
                     .where('uid',
                         isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-                    // .where("paymentstatus", isEqualTo: "unpaid")
+                    .where("orderstatus", isEqualTo: "initialized")
                     .snapshots(),
                 builder: (context,
                     AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
@@ -56,28 +57,50 @@ class _CurrentOrdersState extends State<CurrentOrders> {
                                 return Column(
                                   children: [
                                     ListTile(
-                                      onTap: () {
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //     builder: (builder) =>
-                                        //         AppointCurrentDetail(),
-                                        //   ),
-                                        // );
-                                      },
-                                      leading: CircleAvatar(
-                                        backgroundImage: NetworkImage(
-                                            documentSnapshot['ProductImage']
-                                                .toString()),
-                                      ),
-                                      title: Text(documentSnapshot['Location']),
-                                      // subtitle:
-                                      //     Text(documentSnapshot['problem']),
-
-                                      trailing: Text(
-                                          documentSnapshot['ProductPrice']
-                                              .toString()),
-                                    ),
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (builder) =>
+                                                  CurrentOrderDetail(
+                                                image: documentSnapshot[
+                                                        'productImage']
+                                                    .toString(),
+                                                prductPrice: documentSnapshot[
+                                                    'productPrice'],
+                                                productDescription:
+                                                    documentSnapshot[
+                                                        'productDescription'],
+                                                productName: documentSnapshot[
+                                                    'productName'],
+                                                productUUid: documentSnapshot[
+                                                    'productId'],
+                                                storeAddress: documentSnapshot[
+                                                    'storeaddress'],
+                                                storeName: documentSnapshot[
+                                                    'storeName'],
+                                                storeid:
+                                                    documentSnapshot['storeid'],
+                                                productQuantity:
+                                                    documentSnapshot[
+                                                        'productQuantity'],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        leading: CircleAvatar(
+                                          backgroundImage: NetworkImage(
+                                              documentSnapshot['productImage']
+                                                  .toString()),
+                                        ),
+                                        title: Text(
+                                            documentSnapshot['productName']),
+                                        subtitle: Text(documentSnapshot[
+                                            'productDescription']),
+                                        trailing: TextButton(
+                                          onPressed: () {},
+                                          child: Text("Chat"),
+                                        )),
                                     Divider()
                                   ],
                                 );
