@@ -146,8 +146,8 @@ class _SetupUserProfileState extends State<SetupUserProfile> {
           Container(
             margin: EdgeInsets.only(left: 15, right: 15),
             child: TextFormInputField(
-              hintText: 'Enter your email',
-              textInputType: TextInputType.emailAddress,
+              hintText: 'Enter your Phone Number',
+              textInputType: TextInputType.phone,
               controller: _phoneController,
             ),
           ),
