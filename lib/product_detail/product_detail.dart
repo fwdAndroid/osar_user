@@ -137,21 +137,26 @@ class _ProductDetailState extends State<ProductDetail> {
                                 ),
                                 TextButton(
                                   onPressed: () async {
-                                    // Navigator.push(
-                                    //     context,
-                                    //     MaterialPageRoute(
-                                    //         builder: (builder) => OrderNow(
-                                    //               productUuod:
-                                    //                   widget.productUuod,
-                                    //               ProductDescritption: widget
-                                    //                   .ProductDescritption,
-                                    //               ProductImage:
-                                    //                   widget.ProductImage,
-                                    //               ProductName:
-                                    //                   widget.ProductName,
-                                    //               ProductPrice:
-                                    //                   widget.ProductPrice,
-                                    //             )));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (builder) => OrderNow(
+                                                  storeAddress:
+                                                      widget.storeAddress,
+                                                  prductPrice:
+                                                      widget.prductPrice,
+                                                  image: widget.image,
+                                                  productDescription:
+                                                      widget.productDescription,
+                                                  productImages:
+                                                      widget.productImages,
+                                                  productName:
+                                                      widget.productName,
+                                                  productUUid:
+                                                      widget.productUUid,
+                                                  storeName: widget.storeName,
+                                                  storeid: widget.storeid,
+                                                )));
                                   },
                                   child: const Text('OK'),
                                 ),

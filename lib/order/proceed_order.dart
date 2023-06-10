@@ -2,27 +2,35 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:osar_user/order/order_now.dart';
 import 'package:osar_user/user_main_dashboard.dart';
 import 'package:uuid/uuid.dart';
 
 class ProceedOrder extends StatefulWidget {
-  final ProductName;
-  final ProductDescritption;
-  final ProductImage;
-  final ProductPrice;
+  final image;
+  final prductPrice;
+  final productDescription;
+  final productImages;
+  final productName;
+  final productUUid;
+  final storeAddress;
+  final storeName;
+  final storeid;
   final Quantity;
   final Location;
-  final productUuod;
-  const ProceedOrder(
-      {super.key,
-      required this.productUuod,
-      required this.ProductDescritption,
-      required this.ProductImage,
-      required this.ProductName,
-      required this.Location,
-      required this.Quantity,
-      required this.ProductPrice});
+  const ProceedOrder({
+    super.key,
+    required this.image,
+    required this.prductPrice,
+    required this.productImages,
+    required this.productDescription,
+    required this.storeAddress,
+    required this.storeName,
+    required this.storeid,
+    required this.productName,
+    required this.productUUid,
+    required this.Location,
+    required this.Quantity,
+  });
 
   @override
   State<ProceedOrder> createState() => _ProceedOrderState();
@@ -35,25 +43,11 @@ class _ProceedOrderState extends State<ProceedOrder> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        actions: [
-          TextButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (builder) => OrderNow(
-                            productUuod: widget.productUuod,
-                            ProductDescritption: widget.ProductDescritption,
-                            ProductImage: widget.ProductImage,
-                            ProductName: widget.ProductName,
-                            ProductPrice: widget.ProductPrice)));
-              },
-              child: Text("Edit Order"))
-        ],
+        iconTheme: IconThemeData(color: Colors.black),
         elevation: 0,
         backgroundColor: Colors.white,
         title: Text(
-          widget.ProductName,
+          widget.productName,
           style: TextStyle(
             color: Colors.black,
           ),
@@ -101,14 +95,14 @@ class _ProceedOrderState extends State<ProceedOrder> {
                       style: TextStyle(
                           color: Colors.black, fontWeight: FontWeight.bold),
                     ),
-                    Text(widget.ProductName),
+                    Text(widget.productName),
                     Divider(),
                     Text(
                       "Product Description",
                       style: TextStyle(
                           color: Colors.black, fontWeight: FontWeight.bold),
                     ),
-                    Text(widget.ProductDescritption),
+                    Text(widget.productDescription),
                     Divider(),
                     Text(
                       "Location",
@@ -129,7 +123,7 @@ class _ProceedOrderState extends State<ProceedOrder> {
                       style: TextStyle(
                           color: Colors.black, fontWeight: FontWeight.bold),
                     ),
-                    Text(prices(int.parse(widget.Quantity), widget.ProductPrice)
+                    Text(prices(int.parse(widget.Quantity), widget.prductPrice)
                         .toString()),
                     // Divider(),
                   ],
@@ -162,17 +156,23 @@ class _ProceedOrderState extends State<ProceedOrder> {
                                         .collection("orders")
                                         .doc(uui)
                                         .set({
+                                      "productDescription":
+                                          widget.productDescription,
                                       "uid": FirebaseAuth
                                           .instance.currentUser!.uid,
-                                      "ProductPrice": prices(
+                                      "storeName": widget.storeName,
+                                      "storeaddress": widget.storeAddress,
+                                      "storeid": widget.storeid,
+                                      "productName": widget.productName,
+                                      "productPrice": prices(
                                           int.parse(widget.Quantity),
-                                          widget.ProductPrice),
-                                      "ProductQuantity":
+                                          widget.prductPrice),
+                                      "productQuantity":
                                           int.parse(widget.Quantity),
                                       "Location": widget.Location,
-                                      "ProductImage": widget.ProductImage,
-                                      "ProductId": widget.productUuod,
-                                      "ConfrimOrderId": uui
+                                      "productImage": widget.image,
+                                      "productId": widget.productUUid,
+                                      "confrimOrderId": uui
                                     }).then((value) => {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(

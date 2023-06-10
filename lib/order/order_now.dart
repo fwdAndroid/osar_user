@@ -3,18 +3,27 @@ import 'package:osar_user/order/proceed_order.dart';
 import 'package:osar_user/widgets/textfieldwidget.dart';
 
 class OrderNow extends StatefulWidget {
-  final ProductName;
-  final ProductDescritption;
-  final ProductImage;
-  final ProductPrice;
-  final productUuod;
-  OrderNow(
-      {super.key,
-      required this.productUuod,
-      required this.ProductDescritption,
-      required this.ProductImage,
-      required this.ProductName,
-      required this.ProductPrice});
+  final image;
+  final prductPrice;
+  final productDescription;
+  final productImages;
+  final productName;
+  final productUUid;
+  final storeAddress;
+  final storeName;
+  final storeid;
+  OrderNow({
+    super.key,
+    required this.prductPrice,
+    required this.productDescription,
+    required this.productImages,
+    required this.image,
+    required this.storeAddress,
+    required this.productName,
+    required this.productUUid,
+    required this.storeName,
+    required this.storeid,
+  });
 
   @override
   State<OrderNow> createState() => _OrderNowState();
@@ -31,7 +40,7 @@ class _OrderNowState extends State<OrderNow> {
         elevation: 0,
         backgroundColor: Colors.white,
         title: Text(
-          widget.ProductName,
+          widget.productName,
           style: TextStyle(
             color: Colors.black,
           ),
@@ -63,7 +72,7 @@ class _OrderNowState extends State<OrderNow> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Image.network(
-                    widget.ProductImage,
+                    widget.image,
                     width: 150,
                     height: 150,
                     fit: BoxFit.cover,
@@ -74,7 +83,7 @@ class _OrderNowState extends State<OrderNow> {
                         "Product Name",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      Text(widget.ProductName),
+                      Text(widget.productName),
                       Divider(
                         color: Colors.red,
                       ),
@@ -82,13 +91,13 @@ class _OrderNowState extends State<OrderNow> {
                         "Product Description",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      Text(widget.ProductDescritption),
+                      Text(widget.productDescription),
                       Divider(),
                       Text(
                         "Product Price",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      Text(widget.ProductPrice.toString())
+                      Text(widget.prductPrice.toString())
                     ],
                   )
                 ],
@@ -135,28 +144,43 @@ class _OrderNowState extends State<OrderNow> {
                                   ),
                                   TextButton(
                                     onPressed: () async {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (builder) =>
-                                                  ProceedOrder(
-                                                    Location:
-                                                        _locationController
-                                                            .text,
-                                                    Quantity:
-                                                        _quantityController
-                                                            .text,
-                                                    productUuod:
-                                                        widget.productUuod,
-                                                    ProductDescritption: widget
-                                                        .ProductDescritption,
-                                                    ProductImage:
-                                                        widget.ProductImage,
-                                                    ProductName:
-                                                        widget.ProductName,
-                                                    ProductPrice:
-                                                        widget.ProductPrice,
-                                                  )));
+                                      if (_locationController.text.isEmpty ||
+                                          _quantityController.text.isEmpty) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                                content: Text(
+                                                    "location or Quantity is required")));
+                                        Navigator.pop(context);
+                                      } else {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (builder) =>
+                                                    ProceedOrder(
+                                                      storeid: widget.storeid,
+                                                      storeName:
+                                                          widget.storeName,
+                                                      storeAddress:
+                                                          widget.storeAddress,
+                                                      productImages:
+                                                          widget.productImages,
+                                                      Location:
+                                                          _locationController
+                                                              .text,
+                                                      Quantity:
+                                                          _quantityController
+                                                              .text,
+                                                      productUUid:
+                                                          widget.productUUid,
+                                                      productDescription: widget
+                                                          .productDescription,
+                                                      image: widget.image,
+                                                      productName:
+                                                          widget.productName,
+                                                      prductPrice:
+                                                          widget.prductPrice,
+                                                    )));
+                                      }
                                     },
                                     child: const Text('OK'),
                                   ),
