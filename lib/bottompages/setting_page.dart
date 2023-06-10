@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:osar_user/auth/main_auth.dart';
+import 'package:osar_user/bottompages/order_page.dart';
 import 'package:osar_user/profile/edit_profile.dart';
 
 class SettingPage extends StatefulWidget {
@@ -116,7 +117,10 @@ class _SettingPageState extends State<SettingPage> {
             endIndent: 15,
           ),
 
-          zisttile('Orders', Icons.online_prediction_rounded, () {}),
+          zisttile('Orders', Icons.online_prediction_rounded, () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (builder) => OrderPage()));
+          }),
 
           Divider(
             color: Colors.grey,

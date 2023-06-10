@@ -161,6 +161,7 @@ class _ProceedOrderState extends State<ProceedOrder> {
                                         .collection("orders")
                                         .doc(uui)
                                         .set({
+                                      "chat": "no",
                                       "username": widget.username,
                                       "phoneNumber": widget.phoneNumber,
                                       "orderstatus": "initialized",

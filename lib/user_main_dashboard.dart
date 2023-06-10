@@ -63,15 +63,15 @@ class _UserMainDashBoardState extends State<UserMainDashBoard> {
                 Icons.apps,
                 color: Color(0xffFFBF00),
               )),
-          BottomNavyBarItem(
-              title: Text(
-                'Chat',
-                style: TextStyle(color: Colors.black),
-              ),
-              icon: Icon(
-                Icons.message_sharp,
-                color: Color(0xffFFBF00),
-              )),
+          // BottomNavyBarItem(
+          //     title: Text(
+          //       'Chat',
+          //       style: TextStyle(color: Colors.black),
+          //     ),
+          //     icon: Icon(
+          //       Icons.message_sharp,
+          //       color: Color(0xffFFBF00),
+          //     )),
           BottomNavyBarItem(
               title: Text(
                 'Setting',

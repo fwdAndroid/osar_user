@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:osar_user/bottompages/chat_page.dart';
 import 'package:osar_user/tab/current_order_detail.dart';
 
 class CurrentOrders extends StatefulWidget {
@@ -112,7 +113,21 @@ class _CurrentOrdersState extends State<CurrentOrders> {
                                           ],
                                         ),
                                         trailing: TextButton(
-                                          onPressed: () {},
+                                          onPressed: () async {
+                                            FirebaseFirestore.instance
+                                                .collection("orders")
+                                                .doc(documentSnapshot.id)
+                                                .update({"chat": 'yes'});
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (builder) =>
+                                                        ChatPage(
+                                                          storeid:
+                                                              documentSnapshot[
+                                                                  'storeid'],
+                                                        )));
+                                          },
                                           child: Text("Chat"),
                                         )),
                                     Divider()
