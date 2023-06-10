@@ -115,7 +115,7 @@ class _OrderNowState extends State<OrderNow> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 15, right: 15),
+              margin: EdgeInsets.only(left: 15, right: 15, top: 10),
               child: TextFormInputField(
                 hintText: 'Location',
                 textInputType: TextInputType.text,

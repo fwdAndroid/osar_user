@@ -93,10 +93,24 @@ class _CurrentOrdersState extends State<CurrentOrders> {
                                               documentSnapshot['productImage']
                                                   .toString()),
                                         ),
-                                        title: Text(
-                                            documentSnapshot['productName']),
-                                        subtitle: Text(documentSnapshot[
-                                            'productDescription']),
+                                        title: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text("Product Name"),
+                                            Text(documentSnapshot[
+                                                'productName']),
+                                          ],
+                                        ),
+                                        subtitle: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text("Product Description"),
+                                            Text(documentSnapshot[
+                                                'productDescription']),
+                                          ],
+                                        ),
                                         trailing: TextButton(
                                           onPressed: () {},
                                           child: Text("Chat"),
