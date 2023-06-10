@@ -1,13 +1,10 @@
-import 'dart:io';
 import 'dart:typed_data';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:osar_user/database/storage_methods.dart';
 import 'package:osar_user/models/store_models.dart';
-import 'package:uuid/uuid.dart';
 
 class DatabaseMethods {
   final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;

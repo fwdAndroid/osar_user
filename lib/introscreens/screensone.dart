@@ -9,7 +9,6 @@ class _OnboardingScreenOneState extends State<OnboardingScreenOne> {
   @override
   Widget build(BuildContext context) {
     //it will helps to return the size of the screen
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor: Colors.white,
         body: Column(
