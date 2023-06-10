@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:osar_user/product_detail/product_detail.dart';
-import 'package:osar_user/widgets/my_drawer.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

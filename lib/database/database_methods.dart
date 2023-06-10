@@ -42,14 +42,13 @@ class DatabaseMethods {
     try {
       //Add User to the database with modal
       StoreModel userModel = StoreModel(
-          email: '',
+          email: FirebaseAuth.instance.currentUser!.email!.toString(),
           address: '',
           dob: '',
           photoUrl: "",
           name: '',
           uid: FirebaseAuth.instance.currentUser!.uid,
-          phoneNumber:
-              FirebaseAuth.instance.currentUser!.phoneNumber.toString(),
+          phoneNumber: "",
           blocked: false);
       await firebaseFirestore
           .collection('users')
@@ -69,7 +68,7 @@ class DatabaseMethods {
     required String email,
     required String uid,
     required String name,
-    required String address,
+    String? address,
     required bool blocked,
     required String dob,
     required String phoneNumber,
@@ -85,13 +84,12 @@ class DatabaseMethods {
         StoreModel userModel = StoreModel(
           blocked: blocked,
           name: name,
-          address: address,
+          address: "",
           dob: dob,
           uid: FirebaseAuth.instance.currentUser!.uid,
-          email: email,
+          email: FirebaseAuth.instance.currentUser!.email!.toString(),
           photoUrl: photoURL,
-          phoneNumber:
-              FirebaseAuth.instance.currentUser!.phoneNumber.toString(),
+          phoneNumber: phoneNumber,
         );
         await firebaseFirestore
             .collection('users')

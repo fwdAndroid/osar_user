@@ -6,9 +6,8 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
 import 'package:osar_user/database/database_methods.dart';
-import 'package:osar_user/user_main_dashboard.dart';
+import 'package:osar_user/profile/add_map_address.dart';
 import 'package:osar_user/widgets/textfieldwidget.dart';
 import 'package:osar_user/widgets/utils.dart';
 
@@ -20,9 +19,8 @@ class SetupUserProfile extends StatefulWidget {
 }
 
 class _SetupUserProfileState extends State<SetupUserProfile> {
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _dobController = TextEditingController();
-  final TextEditingController _addressController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
@@ -46,8 +44,7 @@ class _SetupUserProfileState extends State<SetupUserProfile> {
     // TODO: implement dispose
     super.dispose();
     _nameController.clear();
-    _emailController.clear();
-    _addressController.clear();
+    _phoneController.clear();
     _dobController.clear();
   }
 
@@ -72,7 +69,7 @@ class _SetupUserProfileState extends State<SetupUserProfile> {
                 )),
           ),
           SizedBox(
-            height: 55,
+            height: 25,
           ),
           Center(
             child: InkWell(
@@ -151,18 +148,7 @@ class _SetupUserProfileState extends State<SetupUserProfile> {
             child: TextFormInputField(
               hintText: 'Enter your email',
               textInputType: TextInputType.emailAddress,
-              controller: _emailController,
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 15, right: 15),
-            child: TextFormInputField(
-              hintText: 'Enter Address',
-              textInputType: TextInputType.text,
-              controller: _addressController,
+              controller: _phoneController,
             ),
           ),
           SizedBox(
@@ -217,8 +203,7 @@ class _SetupUserProfileState extends State<SetupUserProfile> {
 
   SetupUserProfile() async {
     if (_nameController.text.isEmpty ||
-        _emailController.text.isEmpty ||
-        _addressController.text.isEmpty ||
+        _phoneController.text.isEmpty ||
         _dobController.text.isEmpty) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("All Fields are required")));
@@ -227,12 +212,10 @@ class _SetupUserProfileState extends State<SetupUserProfile> {
         _isLoading = true;
       });
       String rse = await DatabaseMethods().profileDetail(
-          email: _emailController.text,
+          email: FirebaseAuth.instance.currentUser!.email!.toString(),
           name: _nameController.text,
           dob: _dobController.text,
-          address: _addressController.text,
-          phoneNumber:
-              FirebaseAuth.instance.currentUser!.phoneNumber.toString(),
+          phoneNumber: _phoneController.text,
           file: _image!,
           uid: FirebaseAuth.instance.currentUser!.uid,
           blocked: false);
@@ -243,8 +226,8 @@ class _SetupUserProfileState extends State<SetupUserProfile> {
       });
       if (rse == 'success') {
         showSnakBar(rse, context);
-        Navigator.push(context,
-            MaterialPageRoute(builder: (builder) => UserMainDashBoard()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (builder) => AddMapAddress()));
       } else {
         showSnakBar(rse, context);
       }
